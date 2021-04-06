@@ -124,7 +124,6 @@ let copyUnprocessedAssetsForProd = () => {
 let serve = () => {
     browserSync({
         notify: true,
-        port: 9000,
         reloadDelay: 50,
         browser: browserChoice,
         server: {
