@@ -121,19 +121,6 @@ let copyUnprocessedAssetsForProd = () => {
     ], {dot: true}).pipe(dest(`prod`));
 };
 
-let compressImages = () => {
-    return src(`dev/img/**/*`)
-        .pipe(cache(
-            imageCompressor({
-                optimizationLevel: 3, // For PNG files. Accepts 0 – 7; 3 is default.
-                progressive: true,    // For JPG files.
-                multipass: false,     // For SVG files. Set to true for compression.
-                interlaced: false     // For GIF files. Set to true for compression.
-            })
-        ))
-        .pipe(dest(`prod/img`));
-};
-
 let serve = () => {
     browserSync({
         notify: true,
