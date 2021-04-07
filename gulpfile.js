@@ -73,7 +73,7 @@ let compileCSSForProd = () => {
 };
 
 let transpileJSForDev = () => {
-    return src(`dev/scripts/*.js`)
+    return src(`js/*.js`)
         .pipe(babel())
         .pipe(dest(`temp/scripts`));
 };
