@@ -4,6 +4,10 @@ header{
   font-size: 40px;
 }
 
+.button{
+  font-size: 20px;
+}
+
 .button1{
   position: relative;
   left: 25%;
