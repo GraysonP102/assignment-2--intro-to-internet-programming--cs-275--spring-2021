@@ -1,4 +1,10 @@
 header{
-  text-indent: 45%;
+  position: relative;
+  left: 45%;
   font-size: 40px;
+}
+
+.test{
+  position: relative;
+  left: 25%;
 }
