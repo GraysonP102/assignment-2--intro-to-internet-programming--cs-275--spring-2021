@@ -1,4 +1,4 @@
-function whiteRice() {
+function whiteRice() { // eslint-disable-line no-unused-vars
     let x = document.getElementById(`whiteRice`);
     let y = document.getElementById(`CaliRice`);
     y.style.display = `none`;
@@ -17,7 +17,7 @@ function whiteRice() {
     ` of rice with `+h.toFixed(2)+` cups of water and 1 Tbsp olive oil.`;
 }
 
-function CaliRice() {
+function CaliRice() { // eslint-disable-line no-unused-vars
     let x = document.getElementById(`CaliRice`);
     let y = document.getElementById(`whiteRice`);
     y.style.display = `none`;
