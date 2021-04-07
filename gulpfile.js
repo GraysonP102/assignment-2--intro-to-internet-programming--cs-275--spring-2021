@@ -194,7 +194,6 @@ exports.chrome = series(chrome, serve);
 exports.opera = series(opera, serve);
 exports.edge = series(edge, serve);
 exports.safari = series(safari, serve);
-exports.allBrowsers = series(allBrowsers, serve);
 exports.validateHTML = validateHTML;
 exports.compressHTML = compressHTML;
 exports.compileCSSForDev = compileCSSForDev;
