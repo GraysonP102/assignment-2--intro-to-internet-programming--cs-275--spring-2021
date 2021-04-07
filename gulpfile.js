@@ -1,6 +1,7 @@
 const { src, dest, series, watch } = require(`gulp`);
 const del = require(`del`);
 const babel = require(`gulp-babel`);
+const sass = require(`gulp-sass`);
 const htmlCompressor = require(`gulp-htmlmin`);
 const htmlValidator = require(`gulp-html`);
 const jsLinter = require(`gulp-eslint`);
@@ -54,7 +55,7 @@ let lintCSS = () => {
 };
 
 let compileCSSForProd = () => {
-    return src(`css/*css`)
+    return src(`css/*.css`)
         .pipe(sass({
             outputStyle: `compressed`,
             precision: 10
