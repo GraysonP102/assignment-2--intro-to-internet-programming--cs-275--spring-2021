@@ -209,10 +209,8 @@ exports.build = series(
     compressHTML,
     compileCSSForProd,
     transpileJSForProd,
-    compressImages,
     copyUnprocessedAssetsForProd
 );
-exports.compressImages = compressImages;
 exports.serve = series(compileCSSForDev, lintJS, transpileJSForDev, validateHTML, serve);
 exports.clean = clean;
 exports.default = listTasks;
