@@ -53,15 +53,6 @@ let lintCSS = () => {
         }));
 };
 
-let compileCSSForDev = () => {
-    return src(`dev/styles/main.scss`)
-        .pipe(sass({
-            outputStyle: `expanded`,
-            precision: 10
-        }).on(`error`, sass.logError))
-        .pipe(dest(`temp/styles`));
-};
-
 let compileCSSForProd = () => {
     return src(`dev/styles/main.scss`)
         .pipe(sass({
@@ -196,7 +187,6 @@ exports.edge = series(edge, serve);
 exports.safari = series(safari, serve);
 exports.validateHTML = validateHTML;
 exports.compressHTML = compressHTML;
-exports.compileCSSForDev = compileCSSForDev;
 exports.compileCSSForProd = compileCSSForProd;
 exports.lintCSS = lintCSS;
 exports.transpileJSForDev = transpileJSForDev;
@@ -209,6 +199,6 @@ exports.build = series(
     transpileJSForProd,
     copyUnprocessedAssetsForProd
 );
-exports.serve = series(compileCSSForDev, lintJS, transpileJSForDev, validateHTML, serve);
+exports.serve = series(lintJS, transpileJSForDev, validateHTML, serve);
 exports.clean = clean;
 exports.default = listTasks;
