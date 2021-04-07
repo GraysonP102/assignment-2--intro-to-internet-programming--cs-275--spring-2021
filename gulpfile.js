@@ -132,7 +132,7 @@ let serve = () => {
         series(compileCSSForDev)
     ).on(`change`, reload);
 
-    watch(`dev/html/**/*.html`,
+    watch(`html/*.html`,
         series(validateHTML)
     ).on(`change`, reload);
 
