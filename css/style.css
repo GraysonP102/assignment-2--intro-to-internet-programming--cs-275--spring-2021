@@ -18,3 +18,11 @@
   position: fixed;
   left: 70%;
 }
+
+.CaliRice{
+  position: fixed;
+  left: 65%;
+  bottom: 30%;
+  font-size: 20px;
+  padding-right: 5px;
+}
