@@ -10,11 +10,11 @@ header{
 }
 
 .button1{
-  position: relative;
-  left: 25%;
+  position: fixed;
+  left: 15%;
 }
 
 .button2{
-  position: relative;
+  position: fixed;
   left: 70%;
 }
