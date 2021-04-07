@@ -7,6 +7,7 @@ function whiteRice() {
   } else {
     x.style.display = "none";
   }
+  z = ask();
 }
 
 function CaliRice() {
@@ -18,4 +19,14 @@ function CaliRice() {
   } else {
     x.style.display = "none";
   }
+  z = ask();
+}
+
+function ask() {
+    let z = prompt("How many cups of rice do you want?");
+    z = parseFloat(z,10);
+    while(isNaN(z) == true){
+        z = prompt("How many cups of rice do you want?");
+    }
+    return z;
 }
