@@ -31,7 +31,7 @@ function CaliRice() {
 function ask() {
     let z = prompt("How many cups of rice do you want?");
     z = parseFloat(z,10);
-    while(isNaN(z) == true){
+    while(isNaN(z) == true || z <= 0){
         z = prompt("How many cups of rice do you want?");
     }
     return z;
