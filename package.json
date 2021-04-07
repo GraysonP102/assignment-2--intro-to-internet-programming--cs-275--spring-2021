@@ -10,12 +10,14 @@
     "type": "git",
     "url": "git+https://github.com/GraysonP102/assignment-2--intro-to-internet-programming--cs-275--spring-2021.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/GraysonP102/assignment-2--intro-to-internet-programming--cs-275--spring-2021/issues"
   },
   "homepage": "https://github.com/GraysonP102/assignment-2--intro-to-internet-programming--cs-275--spring-2021#readme",
+  "dependencies": {},
   "devDependencies": {
     "gulp": "^4.0.2"
   }
