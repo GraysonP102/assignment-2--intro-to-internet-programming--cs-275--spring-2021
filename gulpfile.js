@@ -50,7 +50,7 @@ let lintCSS = () => {
             reporters: [
                 {formatter: `verbose`, console: true}
             ]
-        });
+        }));
 };
 
 let compileCSSForDev = () => {
