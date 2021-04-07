@@ -77,7 +77,7 @@ let transpileJSForProd = () => {
 };
 
 let lintJS = () => {
-    return src(`dev/scripts/*.js`)
+    return src(`js/*.js`)
         .pipe(jsLinter({
             parserOptions: {
                 ecmaVersion: 2017,
