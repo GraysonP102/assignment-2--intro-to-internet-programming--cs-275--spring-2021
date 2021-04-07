@@ -54,6 +54,15 @@ let lintCSS = () => {
         }));
 };
 
+let compileCSSForDev = () => {
+    return src(`css/*.css`)
+        .pipe(sass({
+            outputStyle: `expanded`,
+            precision: 10
+        }).on(`error`, sass.logError))
+        .pipe(dest(`temp/styles`));
+};
+
 let compileCSSForProd = () => {
     return src(`css/*.css`)
         .pipe(sass({
@@ -188,6 +197,7 @@ exports.edge = series(edge, serve);
 exports.safari = series(safari, serve);
 exports.validateHTML = validateHTML;
 exports.compressHTML = compressHTML;
+exports.compileCSSForDev = compileCSSForDev;
 exports.compileCSSForProd = compileCSSForProd;
 exports.lintCSS = lintCSS;
 exports.transpileJSForDev = transpileJSForDev;
