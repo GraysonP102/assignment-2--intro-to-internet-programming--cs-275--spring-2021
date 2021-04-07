@@ -213,3 +213,4 @@ exports.build = series(
 exports.serve = series(lintJS, transpileJSForDev, validateHTML, serve);
 exports.clean = clean;
 exports.default = listTasks;
+exports.dev = series(validateHTML, lintCSS, lintJS, compileCSSForDev, transpileJSForDev);
