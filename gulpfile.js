@@ -128,7 +128,7 @@ let serve = () => {
         series(lintJS, transpileJSForDev)
     ).on(`change`, reload);
 
-    watch(`dev/styles/**/*.scss`,
+    watch(`css/*.css`,
         series(compileCSSForDev)
     ).on(`change`, reload);
 
