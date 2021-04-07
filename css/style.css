@@ -26,3 +26,11 @@
   font-size: 20px;
   padding-right: 5px;
 }
+
+.whiteRice{
+  position: fixed;
+  left: 5%;
+  top: 30%;
+  font-size: 20px;
+  padding-left: 5px;
+}
