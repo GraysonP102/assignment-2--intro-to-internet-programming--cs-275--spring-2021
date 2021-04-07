@@ -31,9 +31,8 @@ async function edge () {
 }
 
 let validateHTML = () => {
-    return src([
-        `dev/html/*.html`,
-        `dev/html/**/*.html`])
+    return src(
+        `html/*.html`)
         .pipe(htmlValidator());
 };
 
