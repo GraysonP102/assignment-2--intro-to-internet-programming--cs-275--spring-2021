@@ -7,12 +7,12 @@ function whiteRice() {
     } else {
         x.style.display = `none`;
     }
-    z = ask();
-    g = `cups`;
+    let z = ask();
+    let g = `cups`;
     if(z == 1){
         g = `cup`;
     }
-    h = z*2;
+    let h = z*2;
     document.getElementById(`whiteWater`).innerHTML = `Combine `+z+` `+g+
     ` of rice with `+h.toFixed(2)+` cups of water and 1 Tbsp olive oil.`;
 }
@@ -26,12 +26,12 @@ function CaliRice() {
     } else {
         x.style.display = `none`;
     }
-    z = ask();
-    g = `cups`;
+    let z = ask();
+    let g = `cups`;
     if(z == 1){
         g = `cup`;
     }
-    h = z*1.6;
+    let h = z*1.6;
     document.getElementById(`CaliWater`).innerHTML = `Combine `+z+` `+g+
     ` of rice with `+h.toFixed(2)+` cups of water `+
     `or broth and 1 Tbsp olive oil.`;
