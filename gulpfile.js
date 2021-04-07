@@ -30,16 +30,6 @@ async function edge () {
     browserChoice = `microsoft-edge`;
 }
 
-async function allBrowsers () {
-    browserChoice = [
-        `safari`,
-        `firefox`,
-        `google chrome`,
-        `opera`,
-        `microsoft-edge`
-    ];
-}
-
 let validateHTML = () => {
     return src([
         `dev/html/*.html`,
@@ -125,7 +115,6 @@ let serve = () => {
     browserSync({
         notify: true,
         reloadDelay: 50,
-        browser: browserChoice,
         server: {
             baseDir: [
                 `temp`,
