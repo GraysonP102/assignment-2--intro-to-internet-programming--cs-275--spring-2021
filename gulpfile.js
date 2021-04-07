@@ -42,6 +42,16 @@ let compressHTML = () => {
         .pipe(dest(`prod`));
 };
 
+let lintCSS = () => {
+    return src(`css/*.css`)
+        .pipe(cssLinter({
+            failAfterError: true,
+            reporters: [
+                {formatter: `verbose`, console: true}
+            ]
+        });
+};
+
 let compileCSSForDev = () => {
     return src(`dev/styles/main.scss`)
         .pipe(sass({
@@ -188,6 +198,7 @@ exports.validateHTML = validateHTML;
 exports.compressHTML = compressHTML;
 exports.compileCSSForDev = compileCSSForDev;
 exports.compileCSSForProd = compileCSSForProd;
+exports.lintCSS = lintCSS;
 exports.transpileJSForDev = transpileJSForDev;
 exports.transpileJSForProd = transpileJSForProd;
 exports.lintJS = lintJS;
