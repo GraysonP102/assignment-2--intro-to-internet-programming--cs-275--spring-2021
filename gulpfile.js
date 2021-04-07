@@ -8,6 +8,7 @@ const jsCompressor = require(`gulp-uglify`);
 const cache = require(`gulp-cache`);
 const browserSync = require(`browser-sync`);
 const reload = browserSync.reload;
+const cssLinter = require(`gulp-stylelint`);
 let browserChoice = `default`;
 
 async function safari () {
