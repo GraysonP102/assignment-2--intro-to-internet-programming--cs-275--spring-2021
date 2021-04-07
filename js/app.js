@@ -13,7 +13,7 @@ function whiteRice() {
       g = "cup";
   }
   h = z*2;
-  document.getElementById("whiteWater").innerHTML = "Combine "+z+" "+g+" of rice with "+h+" cups of water and 1 Tbsp olive oil.";
+  document.getElementById("whiteWater").innerHTML = "Combine "+z+" "+g+" of rice with "+h.toFixed(2)+" cups of water and 1 Tbsp olive oil.";
 }
 
 function CaliRice() {
