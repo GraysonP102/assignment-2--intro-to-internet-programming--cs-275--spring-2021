@@ -54,7 +54,7 @@ let lintCSS = () => {
 };
 
 let compileCSSForProd = () => {
-    return src(`dev/styles/main.scss`)
+    return src(`css/*css`)
         .pipe(sass({
             outputStyle: `compressed`,
             precision: 10
