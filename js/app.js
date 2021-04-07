@@ -24,7 +24,7 @@ function CaliRice() {
   if(z == 1){
       g = "cup"
   }
-  document.getElementById("CaliWater").innerHTML = "Combine "+z+" "+g+" of rice with "+(2*z)+" cups of water "+
+  document.getElementById("CaliWater").innerHTML = "Combine "+z+" "+g+" of rice with "+(1.6*z)+" cups of water "+
   "or broth and 1 Tbsp olive oil.";
 }
 
