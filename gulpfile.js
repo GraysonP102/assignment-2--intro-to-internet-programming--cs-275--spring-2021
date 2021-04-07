@@ -139,7 +139,7 @@ let serve = () => {
     ).on(`change`, reload);
 
     watch(`css/*.css`,
-        series(compileCSSForDev)
+        series(lintCSS, compileCSSForDev)
     ).on(`change`, reload);
 
     watch(`html/*.html`,
