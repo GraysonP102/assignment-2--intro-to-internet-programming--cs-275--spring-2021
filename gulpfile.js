@@ -115,9 +115,9 @@ let serve = () => {
         reloadDelay: 50,
         server: {
             baseDir: [
-                `css`,
-                `html`,
-                `js`
+                `temp/css`,
+                `temp/html`,
+                `temp/js`
             ]
         }
     });
