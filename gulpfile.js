@@ -54,7 +54,7 @@ let lintCSS = () => {
         }));
 };
 
-let compileCSSForDev = () => {
+let compileCSSForTemp = () => {
     return src(`temp/css/*.css`)
         .pipe(sass({
             outputStyle: `expanded`,
@@ -72,7 +72,7 @@ let compileCSSForProd = () => {
         .pipe(dest(`prod/styles`));
 };
 
-let transpileJSForDev = () => {
+let transpileJSForTemp = () => {
     return src(`temp/js/*.js`)
         .pipe(babel())
         .pipe(dest(`temp/js`));
@@ -123,11 +123,11 @@ let serve = () => {
     });
 
     watch(`temp/js/*.js`,
-        series(lintJS, transpileJSForDev)
+        series(lintJS, transpileJSForTemp)
     ).on(`change`, reload);
 
     watch(`temp/css/*.css`,
-        series(lintCSS, compileCSSForDev)
+        series(lintCSS, compileCSSForTemp)
     ).on(`change`, reload);
 
     watch(`temp/html/*.html`,
@@ -164,10 +164,10 @@ exports.edge = series(edge, serve);
 exports.safari = series(safari, serve);
 exports.validateHTML = validateHTML;
 exports.compressHTML = compressHTML;
-exports.compileCSSForDev = compileCSSForDev;
+exports.compileCSSForTemp = compileCSSForTemp;
 exports.compileCSSForProd = compileCSSForProd;
 exports.lintCSS = lintCSS;
-exports.transpileJSForDev = transpileJSForDev;
+exports.transpileJSForTemp = transpileJSForTemp;
 exports.transpileJSForProd = transpileJSForProd;
 exports.lintJS = lintJS;
 exports.build = series(
@@ -175,6 +175,6 @@ exports.build = series(
     compileCSSForProd,
     transpileJSForProd,
 );
-exports.serve = series(lintJS, transpileJSForDev, validateHTML, serve);
+exports.serve = series(lintJS, transpileJSForTemp, validateHTML, serve);
 exports.default = listTasks;
-exports.dev = series(validateHTML, lintCSS, lintJS, compileCSSForDev, transpileJSForDev);
+exports.dev = series(validateHTML, lintCSS, lintJS, compileCSSForTemp, transpileJSForTemp);
