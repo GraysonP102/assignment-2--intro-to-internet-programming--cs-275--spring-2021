@@ -34,18 +34,18 @@ async function edge () {
 
 let validateHTML = () => {
     return src(
-        `html/*.html`)
+        `temp/html/*.html`)
         .pipe(htmlValidator());
 };
 
 let compressHTML = () => {
-    return src(`html/*.html`)
+    return src(`temp/html/*.html`)
         .pipe(htmlCompressor({collapseWhitespace: true}))
         .pipe(dest(`prod`));
 };
 
 let lintCSS = () => {
-    return src(`css/*.css`)
+    return src(`temp/css/*.css`)
         .pipe(cssLinter({
             failAfterError: true,
             reporters: [
@@ -55,16 +55,16 @@ let lintCSS = () => {
 };
 
 let compileCSSForDev = () => {
-    return src(`css/*.css`)
+    return src(`temp/css/*.css`)
         .pipe(sass({
             outputStyle: `expanded`,
             precision: 10
         }).on(`error`, sass.logError))
-        .pipe(dest(`temp/styles`));
+        .pipe(dest(`temp/css`));
 };
 
 let compileCSSForProd = () => {
-    return src(`css/*.css`)
+    return src(`temp/css/*.css`)
         .pipe(sass({
             outputStyle: `compressed`,
             precision: 10
@@ -73,20 +73,20 @@ let compileCSSForProd = () => {
 };
 
 let transpileJSForDev = () => {
-    return src(`js/*.js`)
+    return src(`temp/js/*.js`)
         .pipe(babel())
-        .pipe(dest(`temp/scripts`));
+        .pipe(dest(`temp/js`));
 };
 
 let transpileJSForProd = () => {
-    return src(`js/*.js`)
+    return src(`temp/js/*.js`)
         .pipe(babel())
         .pipe(jsCompressor())
         .pipe(dest(`prod/scripts`));
 };
 
 let lintJS = () => {
-    return src(`js/*.js`)
+    return src(`temp/js/*.js`)
         .pipe(jsLinter({
             parserOptions: {
                 ecmaVersion: 2017,
@@ -122,15 +122,15 @@ let serve = () => {
         }
     });
 
-    watch(`js/*.js`,
+    watch(`temp/js/*.js`,
         series(lintJS, transpileJSForDev)
     ).on(`change`, reload);
 
-    watch(`css/*.css`,
+    watch(`temp/css/*.css`,
         series(lintCSS, compileCSSForDev)
     ).on(`change`, reload);
 
-    watch(`html/*.html`,
+    watch(`temp/html/*.html`,
         series(validateHTML)
     ).on(`change`, reload);
 
