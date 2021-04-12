@@ -116,9 +116,7 @@ let serve = () => {
         server: {
             baseDir: [
                 `temp`,
-                `temp/css`,
-                `temp/html`,
-                `temp/js`
+                `temp/html`
             ]
         }
     });
