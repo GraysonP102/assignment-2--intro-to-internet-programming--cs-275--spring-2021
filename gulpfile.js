@@ -34,18 +34,18 @@ async function edge () {
 
 let validateHTML = () => {
     return src(
-        `temp/html/*.html`)
+        `Dev/html/*.html`)
         .pipe(htmlValidator());
 };
 
 let compressHTML = () => {
-    return src(`temp/html/*.html`)
+    return src(`Dev/html/*.html`)
         .pipe(htmlCompressor({collapseWhitespace: true}))
         .pipe(dest(`prod`));
 };
 
 let lintCSS = () => {
-    return src(`temp/css/*.css`)
+    return src(`Dev/css/*.css`)
         .pipe(cssLinter({
             failAfterError: true,
             reporters: [
@@ -54,17 +54,17 @@ let lintCSS = () => {
         }));
 };
 
-let compileCSSForTemp = () => {
-    return src(`temp/css/*.css`)
+let compileCSSForDev = () => {
+    return src(`Dev/css/*.css`)
         .pipe(sass({
             outputStyle: `expanded`,
             precision: 10
         }).on(`error`, sass.logError))
-        .pipe(dest(`temp/css`));
+        .pipe(dest(`Dev/css`));
 };
 
 let compileCSSForProd = () => {
-    return src(`temp/css/*.css`)
+    return src(`Dev/css/*.css`)
         .pipe(sass({
             outputStyle: `compressed`,
             precision: 10
@@ -72,21 +72,21 @@ let compileCSSForProd = () => {
         .pipe(dest(`prod/styles`));
 };
 
-let transpileJSForTemp = () => {
-    return src(`temp/js/*.js`)
+let transpileJSForDev = () => {
+    return src(`Dev/js/*.js`)
         .pipe(babel())
-        .pipe(dest(`temp/js`));
+        .pipe(dest(`Dev/js`));
 };
 
 let transpileJSForProd = () => {
-    return src(`temp/js/*.js`)
+    return src(`Dev/js/*.js`)
         .pipe(babel())
         .pipe(jsCompressor())
         .pipe(dest(`prod/scripts`));
 };
 
 let lintJS = () => {
-    return src(`temp/js/*.js`)
+    return src(`Dev/js/*.js`)
         .pipe(jsLinter({
             parserOptions: {
                 ecmaVersion: 2017,
@@ -115,21 +115,21 @@ let serve = () => {
         reloadDelay: 50,
         server: {
             baseDir: [
-                `temp`,
-                `temp/html`
+                `Dev`,
+                `Dev/html`
             ]
         }
     });
 
-    watch(`temp/js/*.js`,
-        series(lintJS, transpileJSForTemp)
+    watch(`Dev/js/*.js`,
+        series(lintJS, transpileJSForDev)
     ).on(`change`, reload);
 
-    watch(`temp/css/*.css`,
-        series(lintCSS, compileCSSForTemp)
+    watch(`Dev/css/*.css`,
+        series(lintCSS, compileCSSForDev)
     ).on(`change`, reload);
 
-    watch(`temp/html/*.html`,
+    watch(`Dev/html/*.html`,
         series(validateHTML)
     ).on(`change`, reload);
 
@@ -163,10 +163,10 @@ exports.edge = series(edge, serve);
 exports.safari = series(safari, serve);
 exports.validateHTML = validateHTML;
 exports.compressHTML = compressHTML;
-exports.compileCSSForTemp = compileCSSForTemp;
+exports.compileCSSForDev = compileCSSForDev;
 exports.compileCSSForProd = compileCSSForProd;
 exports.lintCSS = lintCSS;
-exports.transpileJSForTemp = transpileJSForTemp;
+exports.transpileJSForDev = transpileJSForDev;
 exports.transpileJSForProd = transpileJSForProd;
 exports.lintJS = lintJS;
 exports.build = series(
@@ -174,6 +174,6 @@ exports.build = series(
     compileCSSForProd,
     transpileJSForProd,
 );
-exports.serve = series(lintJS, transpileJSForTemp, validateHTML, serve);
+exports.serve = series(lintJS, transpileJSForDev, validateHTML, serve);
 exports.default = listTasks;
-exports.dev = series(validateHTML, lintCSS, lintJS, compileCSSForTemp, transpileJSForTemp);
+exports.dev = series(validateHTML, lintCSS, lintJS, compileCSSForDev, transpileJSForDev);
