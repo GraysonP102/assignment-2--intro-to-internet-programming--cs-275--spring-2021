@@ -16,7 +16,9 @@ function whiteRice() {
     } else {
         x.style.display = `none`;
     }
-    var z = ask();
+    if(x.style.display == `block`){
+            var z = ask();
+    }
     var g = `cups`;
     if (z == 1) {
         g = `cup`;
@@ -35,7 +37,9 @@ function CaliRice() {
     } else {
         x.style.display = `none`;
     }
-    var z = ask();
+    if(x.style.display == `block`){
+            var z = ask();
+    }
     var g = `cups`;
     if (z == 1) {
         g = `cup`;
