@@ -115,6 +115,7 @@ let serve = () => {
         reloadDelay: 50,
         server: {
             baseDir: [
+                `temp`,
                 `Dev`,
                 `Dev/html`
             ]
