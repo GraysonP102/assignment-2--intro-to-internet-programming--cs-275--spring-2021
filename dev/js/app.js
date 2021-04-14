@@ -48,5 +48,5 @@ function CaliRice() {
 
 let CaliButton = document.getElementById(`CaliRiceButton`);
 let WhiteButton = document.getElementById(`whiteRiceButton`);
-CaliButton.addEventListener('click',CaliRice);
-WhiteButton.addEventListener('click',whiteRice);
+CaliButton.addEventListener(`click`,CaliRice);
+WhiteButton.addEventListener(`click`,whiteRice);
